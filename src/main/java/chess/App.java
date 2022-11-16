@@ -1,13 +1,11 @@
 package chess;
 
-/**
- * Hello world!
- *
- */
+import chess.graphics.Window;
+
 public class App 
 {
     public static void main(String[] args)
     {
-        System.out.println("Hello World!");
+        new Window();
     }
 }

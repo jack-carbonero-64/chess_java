@@ -3,25 +3,60 @@ package chess.graphics;
 import javax.swing.*;
 import java.awt.*;
 
+import chess.pieces.*;
+
 /**
  * Class to represent a square on the chess board
  */
 public class Square extends JPanel
 {
+    // Chess piece currently on the square
+    Piece piece;    
+    
     /**
-     * Constructor that sets the background color depending on X and Y
+     * Constructor that sets the background color
      * 
-     * @param x X axis position of the square on the board
-     * @param y Y axis position of the square on the board
+     * @param pos Position of the square on the board
      */
-    public Square(int x, int y)
+    public Square(Point pos)
     {
         super();
 
+        this.piece = null;
+
         // Set background color
-        if ((y % 2) == (x % 2))
+        if ((pos.getY() % 2) == (pos.getX() % 2))
            this.setBackground(Color.WHITE);
        else
            this.setBackground(new Color(174, 207, 130));
+    }
+
+    /**
+     * Constructor that sets background color and current piece
+     *
+     * @param  pos   Position of the square on the board
+     * @param  piece Current piece on the square
+     */
+    public Square(Point pos, Piece piece)
+    {
+        super();
+
+        this.piece = piece;
+
+        // Set background color
+        if ((pos.getY() % 2) == (pos.getX() % 2))
+           this.setBackground(Color.WHITE);
+       else
+           this.setBackground(new Color(174, 207, 130));
+    }
+
+    @Override
+    protected void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+
+        // Draw the current piece if there is one on the square
+        if (this.piece != null)
+            g.drawImage(this.piece.getImage(), 0, 0, this);    
     }
 }

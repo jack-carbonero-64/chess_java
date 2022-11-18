@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import chess.pieces.*;
+import chess.events.SquareEvents;
 
 /**
  * Class to represent a square on the chess board
@@ -52,6 +53,9 @@ public class Square extends JPanel
             this.setBackground(Color.WHITE);
         else
             this.setBackground(new Color(174, 207, 130));
+
+        // Detect mouse events on this square
+        this.addMouseListener(new SquareEvents());
     }
 
     @Override
@@ -62,5 +66,15 @@ public class Square extends JPanel
         // Draw the current piece if there is one on the square
         if (this.piece != null)
             g.drawImage(this.piece.getImage(), 0, 0, this);    
+    }
+
+    /**
+     * Getter for the piece on this square
+     *
+     * @return Piece on this square
+     */
+    public Piece getPiece()
+    {
+        return this.piece;
     }
 }

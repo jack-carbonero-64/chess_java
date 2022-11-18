@@ -22,13 +22,15 @@ public class Square extends JPanel
     {
         super();
 
+        this.setName("Square_" + ((int) pos.getX()) + "_" + ((int) pos.getY()));
+
         this.piece = null;
 
         // Set background color
         if ((pos.getY() % 2) == (pos.getX() % 2))
-           this.setBackground(Color.WHITE);
-       else
-           this.setBackground(new Color(174, 207, 130));
+            this.setBackground(Color.WHITE);
+        else
+            this.setBackground(new Color(174, 207, 130));
     }
 
     /**
@@ -41,13 +43,15 @@ public class Square extends JPanel
     {
         super();
 
+        this.setName("Square_" + ((int) pos.getX()) + "_" + ((int) pos.getY()));
+
         this.piece = piece;
 
         // Set background color
         if ((pos.getY() % 2) == (pos.getX() % 2))
-           this.setBackground(Color.WHITE);
-       else
-           this.setBackground(new Color(174, 207, 130));
+            this.setBackground(Color.WHITE);
+        else
+            this.setBackground(new Color(174, 207, 130));
     }
 
     @Override

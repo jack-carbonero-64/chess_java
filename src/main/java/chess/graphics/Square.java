@@ -11,6 +11,12 @@ import chess.events.SquareEvents;
  */
 public class Square extends JPanel
 {
+    // Colors to use
+    private static final Color LIGHT_COLOR = Color.WHITE;
+    private static final Color DARK_COLOR = new Color(174, 207, 130);
+    private static final Color SOURCE_MOVE_COLOR = new Color(200, 15, 15);
+    private static final Color POSSIBLE_MOVE_COLOR = new Color(255, 0, 0);
+
     // Chess piece currently on the square
     private Piece piece;    
     
@@ -32,9 +38,9 @@ public class Square extends JPanel
 
         // Set background color
         if ((pos.getY() % 2) == (pos.getX() % 2))
-            this.baseColor = Color.WHITE;
+            this.baseColor = LIGHT_COLOR;
         else
-            this.baseColor = new Color(174, 207, 130);
+            this.baseColor = DARK_COLOR;
 
         this.setBackground(this.baseColor);
     }
@@ -55,9 +61,9 @@ public class Square extends JPanel
 
         // Set background color
         if ((pos.getY() % 2) == (pos.getX() % 2))
-            this.baseColor = Color.WHITE;
+            this.baseColor = LIGHT_COLOR;
         else
-            this.baseColor = new Color(174, 207, 130);
+            this.baseColor = DARK_COLOR;
 
         this.setBackground(this.baseColor);
 
@@ -91,5 +97,45 @@ public class Square extends JPanel
     public void resetBackgroundColor()
     {
         this.setBackground(this.baseColor);
+    }
+
+    /**
+     * Getter for the light color
+     *
+     * @return Light color
+     */
+    public static Color getLightColor()
+    {
+        return LIGHT_COLOR;
+    }
+
+    /**
+     * Getter for the dark color
+     *
+     * @return Dark color
+     */
+    public static Color getDarkColor()
+    {
+        return DARK_COLOR;
+    }
+
+    /**
+     * Getter for the source move color
+     *
+     * @return Source move color
+     */
+    public static Color getSourceMoveColor()
+    {
+        return SOURCE_MOVE_COLOR;
+    }
+
+    /**
+     * Getter for the possible move color
+     *
+     * @return Possible move color
+     */
+    public static Color getPossibleMoveColor()
+    {
+        return POSSIBLE_MOVE_COLOR;
     }
 }

@@ -92,4 +92,14 @@ abstract public class Piece
     {
         return this.image;
     }
+
+    /**
+     * Getter for the piece position
+     *
+     * @return Piece position
+     */
+    public Point getPosition()
+    {
+        return this.position;
+    }
 }

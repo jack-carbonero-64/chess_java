@@ -12,8 +12,11 @@ import chess.events.SquareEvents;
 public class Square extends JPanel
 {
     // Chess piece currently on the square
-    Piece piece;    
+    private Piece piece;    
     
+    // Background base color
+    private Color baseColor;
+
     /**
      * Constructor that sets the background color
      * 
@@ -29,9 +32,11 @@ public class Square extends JPanel
 
         // Set background color
         if ((pos.getY() % 2) == (pos.getX() % 2))
-            this.setBackground(Color.WHITE);
+            this.baseColor = Color.WHITE;
         else
-            this.setBackground(new Color(174, 207, 130));
+            this.baseColor = new Color(174, 207, 130);
+
+        this.setBackground(this.baseColor);
     }
 
     /**
@@ -50,9 +55,11 @@ public class Square extends JPanel
 
         // Set background color
         if ((pos.getY() % 2) == (pos.getX() % 2))
-            this.setBackground(Color.WHITE);
+            this.baseColor = Color.WHITE;
         else
-            this.setBackground(new Color(174, 207, 130));
+            this.baseColor = new Color(174, 207, 130);
+
+        this.setBackground(this.baseColor);
 
         // Detect mouse events on this square
         this.addMouseListener(new SquareEvents());
@@ -76,5 +83,13 @@ public class Square extends JPanel
     public Piece getPiece()
     {
         return this.piece;
+    }
+
+    /**
+     * Reset this square background color
+     */
+    public void resetBackgroundColor()
+    {
+        this.setBackground(this.baseColor);
     }
 }

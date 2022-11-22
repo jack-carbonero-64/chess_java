@@ -23,6 +23,9 @@ public class Square extends JPanel
     // Background base color
     private Color baseColor;
 
+    // Square position
+    private Point position;
+
     /**
      * Constructor that sets the background color
      * 
@@ -35,6 +38,7 @@ public class Square extends JPanel
         this.setName("Square_" + ((int) pos.getX()) + "_" + ((int) pos.getY()));
 
         this.piece = null;
+        this.position = pos;
 
         // Set background color
         if ((pos.getY() % 2) == (pos.getX() % 2))
@@ -43,6 +47,9 @@ public class Square extends JPanel
             this.baseColor = DARK_COLOR;
 
         this.setBackground(this.baseColor);
+
+        // Detect mouse events on this square
+        this.addMouseListener(new SquareEvents());
     }
 
     /**
@@ -58,6 +65,7 @@ public class Square extends JPanel
         this.setName("Square_" + ((int) pos.getX()) + "_" + ((int) pos.getY()));
 
         this.piece = piece;
+        this.position = pos;
 
         // Set background color
         if ((pos.getY() % 2) == (pos.getX() % 2))
@@ -89,6 +97,16 @@ public class Square extends JPanel
     public Piece getPiece()
     {
         return this.piece;
+    }
+
+    /**
+     * Setter for the piece on this square
+     *
+     * @param p New piece on this square
+     */
+    public void setPiece(Piece p)
+    {
+        this.piece = p;
     }
 
     /**
@@ -137,5 +155,15 @@ public class Square extends JPanel
     public static Color getPossibleMoveColor()
     {
         return POSSIBLE_MOVE_COLOR;
+    }
+
+    /**
+     * Getter for the square position
+     *
+     * @return Square position
+     */
+    public Point getPosition()
+    {
+        return this.position;
     }
 }

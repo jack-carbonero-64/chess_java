@@ -102,4 +102,14 @@ abstract public class Piece
     {
         return this.position;
     }
+
+    /**
+     * Setter for the piece position
+     *
+     * @param p New piece position
+     */
+    public void setPosition(Point p)
+    {
+        this.position = p;
+    }
 }

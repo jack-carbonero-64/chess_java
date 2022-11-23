@@ -66,16 +66,6 @@ abstract public class Piece
     }
 
     /**
-     * Move the piece to another position
-     *
-     * @param p New position
-     */
-    public void moveTo(Point p)
-    {
-        // TODO : Square object as parameter instead of Point one ? 
-    }
-
-    /**
      * Retrieve possible moves for this piece depending of its position
      *
      * @return List of points where the piece can move to

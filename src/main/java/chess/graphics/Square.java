@@ -166,4 +166,20 @@ public class Square extends JPanel
     {
         return this.position;
     }
+
+    /**
+     * Move the current piece to another square, even if there is already a piece on it (Attack case)
+     *
+     * @param newSquare New square where to move the piece
+     */
+    public void movePieceTo(Square newSquare)
+    {
+        this.piece.setPosition(newSquare.getPosition());
+
+        if (newSquare.getPiece() != null)
+            newSquare.getPiece().setPosition(new Point(-1, -1));
+
+        newSquare.setPiece(this.piece);
+        this.setPiece(null);
+    }
 }

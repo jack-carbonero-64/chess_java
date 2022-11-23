@@ -5,8 +5,6 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.event.MouseInputListener;
 
-import java.util.ArrayList;
-
 import chess.graphics.*;
 import chess.pieces.*;
 
@@ -31,16 +29,28 @@ public class SquareEvents implements MouseInputListener
 
         if (p != null)
         {
-            // Change current square background color to see the source of the move possibilities
-            s.setBackground(new Color(200,15,15));
+            // Show moves for this piece
+            if (b.isCurrentlyHighlightedSquaresEmpty())
+                b.displayPossibleMoves(p);
 
-            // Retrieve possible moves and change their squares background color
-            ArrayList<Point> moves = p.getPossibleMoves();
-        
-            for (Point move : moves) {
-                Square moveSquare = (Square) b.getComponent((int) (move.getY() * Board.getBoardColumnNumber() + move.getX()));
-                moveSquare.setBackground(new Color(255,0,0));
+            else
+            {
+                // Attack piece
+                if (s.getBackground() == Square.getPossibleMoveColor())
+                    b.getSourceMoveSquare().movePieceTo(s);
+
+                // Reset possible moves
+                b.resetHighlightedSquares();
             }
+        }
+        else
+        {
+            // Move piece
+            if (s.getBackground() == Square.getPossibleMoveColor())
+                b.getSourceMoveSquare().movePieceTo(s);
+
+            // Reset possible moves
+            b.resetHighlightedSquares();
         }
 	}
 

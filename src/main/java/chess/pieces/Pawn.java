@@ -3,6 +3,8 @@ package chess.pieces;
 import java.awt.*;
 import java.util.ArrayList;
 
+import chess.graphics.*;
+
 /**
  * Class to represent a pawn piece
  */
@@ -23,7 +25,7 @@ public class Pawn extends Piece
     }
 
     @Override
-    public ArrayList<Point> getPossibleMoves()
+    public ArrayList<Point> getPossibleMoves(Board b)
     {
         // TODO
 

@@ -1,5 +1,7 @@
 package chess.pieces;
 
+import chess.graphics.Board;
+
 import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,9 +70,11 @@ abstract public class Piece
     /**
      * Retrieve possible moves for this piece depending of its position
      *
-     * @return List of points where the piece can move to
+     * @param  b Board where to display possible moves
+     *
+     * @return   List of points where the piece can move to
      */
-    abstract public ArrayList<Point> getPossibleMoves();
+    abstract public ArrayList<Point> getPossibleMoves(Board b);
     // TODO : Square object as parameter instead of Point one ? 
 
     /**

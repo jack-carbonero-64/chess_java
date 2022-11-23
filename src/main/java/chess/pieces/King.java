@@ -3,7 +3,7 @@ package chess.pieces;
 import java.awt.*;
 import java.util.ArrayList;
 
-import chess.graphics.Board;
+import chess.graphics.*;
 
 /**
  * Class to represent a king piece
@@ -25,7 +25,7 @@ public class King extends Piece
     }
 
     @Override
-    public ArrayList<Point> getPossibleMoves()
+    public ArrayList<Point> getPossibleMoves(Board b)
     {
         ArrayList<Point> positions = new ArrayList<Point>();
 
@@ -45,9 +45,13 @@ public class King extends Piece
             x = (int) (this.position.getX() + direction.getX());
             y = (int) (this.position.getY() + direction.getY());
 
-            // TODO : Check if there are already pieces
             if (x >= 0 && x < boardColumnNumber && y >= 0 && y < boardRowNumber)
-                positions.add(new Point(x, y));
+            {
+                Square s = (Square) b.getComponent(y * boardColumnNumber + x);
+                
+                if (s.getPiece() == null || s.getPiece().team != this.team)
+                    positions.add(new Point(x, y));
+            }
         }
 
         return positions;

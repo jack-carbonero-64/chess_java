@@ -122,7 +122,7 @@ public class Board extends JPanel
     public void displayPossibleMoves(Piece p)
     {
         // Retrieve possible moves and change their squares background color
-        ArrayList<Point> moves = p.getPossibleMoves();
+        ArrayList<Point> moves = p.getPossibleMoves(this);
     
         // Change current square background color to see the source of the move possibilities
         Square sourceSquare = (Square) this.getComponent((int) (p.getPosition().getY() * BOARD_COLUMN_NUMBER + p.getPosition().getX()));
